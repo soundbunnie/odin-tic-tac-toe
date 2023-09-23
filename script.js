@@ -15,6 +15,10 @@
     var activePlayerMessage = document.getElementById("active-player");
     var winMessage = document.getElementById("win-message")
 
+    document.getElementById("reset-button").addEventListener("click", function () {
+        resetBoard();
+    });    
+
     var gameBoard = (function (){
         var board = [];
         const rows = 3;
@@ -80,6 +84,7 @@
                     let sum = board[i].reduce((a, b) => a + b, 0); // Calculate the sum of the current row
                     if (sum === 3) {
                         winMessage.textContent = "Player One Wins";
+
                         return;
                     } else if (sum === 6) {
                         winMessage.textContent = "Player Two Wins";
@@ -140,7 +145,7 @@
             }
         });
 
-        return{player1, player2, activePlayer, switchTurn, handleTurn};
+        return{_players, player1, player2, activePlayer, switchTurn, handleTurn};
     })();
 
     var printBoard = (function (){
@@ -200,4 +205,20 @@
                 }
             }
         }
-    })
+        {return printBoard};
+    });
+
+    var resetBoard = function () {
+        let board = gameBoard.board;
+        for (let i = 0; i < gameBoard.rows; i++) {
+            for (let j = 0; j < gameBoard.columns; j++) {
+                board[i][j] = 0;
+            }
+        }
+        winMessage.textContent = "";
+        if (gameController.activePlayer === gameController._players[0]){
+            gameController.switchTurn();
+        }
+        printBoard();
+        return board; // Return the updated board
+    };
