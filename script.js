@@ -79,10 +79,10 @@
                 if (allEqual(board[i])){ // Check if every all tokens in row is the same
                     let sum = board[i].reduce((a, b) => a + b, 0); // Calculate the sum of the current row
                     if (sum === 3) {
-                        console.log("Player One Wins");
+                        winMessage.textContent = "Player One Wins";
                         return;
                     } else if (sum === 6) {
-                        console.log("Player Two Wins");
+                        winMessage.textContent = "Player Two Wins";
                         return;
                     }
                 }
@@ -97,10 +97,10 @@
                     if (allEqual(verticalBoard)){
                         verticalSum = verticalBoard.reduce((a, b) => a + b, 0);
                         if (verticalSum === 3) {
-                            console.log("Player One Wins");
+                            winMessage.textContent = "Player One Wins";
                             return;
                         } else if (verticalSum === 6) {
-                            console.log("Player Two Wins");
+                            winMessage.textContent = "Player Two Wins";
                             return;
                         }
                     }
@@ -115,10 +115,10 @@
                 if (allEqual(diagonalBoard)){
                     diagonalSum = diagonalBoard.reduce((a, b) => a + b, 0);
                     if (diagonalSum === 3) {
-                        console.log("Player One Wins");
+                        winMessage.textContent = "Player One Wins";
                         return;
                     } else if (diagonalSum === 6) {
-                        console.log("Player Two Wins");
+                        winMessage.textContent = "Player Two Wins";
                         return;
                     }
                 }
@@ -132,9 +132,9 @@
                 if (allEqual(diagonalBoard)){
                     diagonalSum = diagonalBoard.reduce((a, b) => a + b, 0);
                     if (diagonalSum === 3) {
-                        console.log("Player One Wins");
+                        winMessage.textContent = "Player One Wins";
                     } else if (diagonalSum === 6) {
-                        console.log("Player Two Wins");
+                        winMessage.textContent = "Player Two Wins";
                     }
                 }
             }
