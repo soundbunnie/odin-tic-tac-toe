@@ -65,6 +65,11 @@
                     isWin = true;
                     return;
                 }
+                else if (sum === 444){
+                    winMessage.textContent = "Tie!";
+                    isWin = true;
+                    return;
+                }
             });
 
             var checkWin = (function (){
@@ -72,7 +77,7 @@
                 let rows = gameBoard.rows;
                 let columns = gameBoard.columns;
                 const allEqual = arr => arr.every(val => val === arr[0]); // Check if every value in the array matches the first element
-            
+                
                 // Check rows for a win
                 for (let i = 0; i < rows; i++) {
                     if (allEqual(board[i])){ // Check if every all tokens in row is the same
@@ -115,6 +120,16 @@
                         updateWin(diagonalSum);
                     }
                 }
+                // Check for a tie
+                for (let i = 0; i < rows; i++){
+                    if (!board[i].includes(0) && i === 2){
+                        updateWin(444);
+                    }
+                    else if (board[i].includes(0)){
+                        return;
+                    }
+                }
+                
             });
 
             var printBoard = (function () {
